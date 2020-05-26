@@ -1,26 +1,60 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 void combinations(string s, int i, string t)
 {
-    if(i == s.size()-1)
+    if (i == s.size() - 1)
     {
-        cout<<t<<endl;
-        t+=s[i];
-        cout<<t<<endl;
+        cout << t << endl;
+        t += s[i];
+        cout << t << endl;
         return;
     }
-    combinations(s, i+1, t);
-    t+=s[i];
-    combinations(s,i+1,t);
+    combinations(s, i + 1, t);
+    t += s[i];
+    combinations(s, i + 1, t);
+}
 
+vector<vector<int>> mothership;
+
+int k;
+
+void printCombinations(vector<int> arr, int i, vector<int> support)
+{
+    if (i == arr.size() - 1)
+    {
+
+        mothership.push_back(support);
+        support.push_back(arr[i]);
+        mothership.push_back(support);
+
+        return;
+    }
+    vector<int> temp = support;
+    temp.push_back(arr[i]);
+
+    printCombinations(arr, i + 1, support);
+
+    printCombinations(arr, i + 1, temp);
 }
 
 int main()
 {
-    string s = "abc";
-    string t="";
-    combinations(s,0,t);
+    // string s = "abc";
+    // string t="";
+    // combinations(s,0,t);
+
+    vector<int> temp;
+    vector<int> arr{1, 2, 3};
+    printCombinations(arr, 0, temp);
+    for (auto x : mothership)
+    {
+        for (int c : x)
+        {
+            cout << c << " ";
+        }
+        cout << endl;
+    }
 }
