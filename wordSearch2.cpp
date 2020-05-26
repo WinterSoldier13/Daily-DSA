@@ -60,22 +60,38 @@ bool exist(vector<vector<char>>& board, string word)
     return found;
 }
 
-
-
+vector<string> findWords(vector<vector<char>>& board, vector<string>& words) 
+{
+    vector<string> out;
+    if(board.size()==0 or words.size()==0)
+    {
+        return out;
+    }
+    
+    for(string str: words)
+    {
+        if(exist(board, str))
+        {
+            out.push_back(str);
+        }
+    }
+    return out;
+    
+}
 
 int main()
 {
-    vector<vector<char>> grid{{'A','B','C','E'},
-                              {'S','F','C','S'},
-                              {'A','D','E','E'}};
-    string word = "ABCzCED";
+    vector<vector<char>> grid2{{'o','a','a','n'},
+                               {'e','t','a','e'},
+                               {'i','h','k','r'},
+                               {'i','f','l','v'}};
+    vector<string> arr{"oath","pea","eat","rain"};
 
+    for(auto x: findWords(grid2, arr))
+    {
+        cout<<x<<endl;
+    }
 
-
-
-
-
-    cout<<exist(grid, word)<<endl;
 
     return 0;
 }
