@@ -2,6 +2,7 @@
 #include<bits/stdc++.h>
 
 using namespace std;
+
 class Solution {
 public:
         bool detectCycle(vector<vector<int>> &arr, int index, vector<int> &tracker, vector<int> &recursionStack)
