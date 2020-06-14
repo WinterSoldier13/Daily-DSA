@@ -3,6 +3,7 @@
 
 using namespace std; 
 
+// ________________________________________________________________________________________________________
 
 
 unordered_map<int, vector<int>>  makeGraph(vector<vector<int>> &edges, int n)
@@ -41,7 +42,11 @@ void printGraph(vector<vector<int>> &graph, int n)
     }
     cout<<endl;
 }
+// ________________________________________________________________________________________________________
 
+
+
+// ITERATIVE DFS _________________________________________________________________________________
 
 void DFS(unordered_map<int, vector<int>> graph, int n)
 {
@@ -68,7 +73,7 @@ void DFS(unordered_map<int, vector<int>> graph, int n)
     }
 }
 
-
+// _______________________________________________________________________________________________________
 
 
 
@@ -96,7 +101,7 @@ void recursiveDFS(unordered_map<int, vector<int>> &graph)
 }
 
 
-
+// __________________________________________________________________________________________________________________________
 
 
 void recursiveTopohelper(unordered_map<int, vector<int>> &graph, int n, unordered_set<int> &visited, stack<int> &stack)
@@ -138,6 +143,7 @@ void recursiveTopo(unordered_map<int, vector<int>> &graph, int n)
 
 }
 
+// ___________________________________________________________________________________________________________________
 
 
 void BFS(unordered_map<int, vector<int>> graph, int n)
@@ -164,6 +170,8 @@ void BFS(unordered_map<int, vector<int>> graph, int n)
         }
     }
 }
+
+// ________________________________________________________________________________________________________
 
 bool detectCycle(unordered_map<int, vector<int>> graph, int n)
 {
@@ -196,6 +204,7 @@ bool detectCycle(unordered_map<int, vector<int>> graph, int n)
     return false;
 }
 
+// ________________________________________________________________________________________________________
 
 
 
