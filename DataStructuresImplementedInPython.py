@@ -66,6 +66,8 @@ if "Ayush" in hashmap.keys():
 #  ____________________________________________________________________________________________________________________
 
 # Heaps
+# By default minHeap is implemented
+# to implemet maxHeap multiply by -1 while pushing and poping
 print('\n\nHeaps')
 import heapq
 
