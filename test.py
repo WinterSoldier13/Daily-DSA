@@ -1,23 +1,10 @@
-chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+def findTrailingZeros(n): 
+    count = 0
+  
 
-# inp = 'AB'
-# inp2 = 'AAA'
-# inp3 = 'ZZ'
-inp = input("Enter the characters: ")
-l = len(inp)
-
-
-hashmap={}
-
-for index,ch in enumerate(chars):
-    hashmap[ch] = index+1
-
-ptr = l-1
-sum_=0
-
-for i in inp:
-    sum_ = sum_ + 26**ptr*hashmap[i]
-    ptr-=1
-
-print(sum_)
-
+    i=5
+    while (n/i>=1): 
+        count += int(n/i) 
+        i *= 5
+  
+    return int(count)
