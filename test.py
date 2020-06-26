@@ -1,16 +1,23 @@
-nums = [1,2,3,1]
+chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-l  = len(nums)
+# inp = 'AB'
+# inp2 = 'AAA'
+# inp3 = 'ZZ'
+inp = input("Enter the characters: ")
+l = len(inp)
 
-if(nums[0]>nums[1]):
-    return 0
-if(nums[-1]>nums[-2]):
-    return l-1
 
-index = -1
-for i in range(1,l-1):
-    if(nums[i-1]<nums[i] and nums[i]>nums[i+1]):
-        index = i
-        break
+hashmap={}
 
-return index
+for index,ch in enumerate(chars):
+    hashmap[ch] = index+1
+
+ptr = l-1
+sum_=0
+
+for i in inp:
+    sum_ = sum_ + 26**ptr*hashmap[i]
+    ptr-=1
+
+print(sum_)
+
