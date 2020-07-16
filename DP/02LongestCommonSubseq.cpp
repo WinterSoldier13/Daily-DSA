@@ -57,7 +57,7 @@ int dynamic(string s1, string s2)
     {
         for(int j=1;j<=l2;j++)
         {
-            if(s1[i]==s2[j])
+            if(s1[i-1]==s2[j-1])
             {
                 dp[i][j] = 1+dp[i-1][j-1];
             }
