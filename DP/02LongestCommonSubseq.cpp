@@ -104,8 +104,10 @@ int dynamic(string s1, string s2)
 
 int main()
 {
-    string s1 = "AGXTXXAYGAB";
-    string s2 = "GXTXAYBX";
+    // string s1 = "AGXTXXAYGAB";
+    // string s2 = "GXTXAYBX";   
+    string s1 = "bb";
+    string s2 = "ahbgdc";
     int l1 = s1.size();
     int l2 = s2.size();
 
