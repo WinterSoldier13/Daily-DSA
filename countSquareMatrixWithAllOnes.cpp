@@ -3,6 +3,21 @@ using namespace std;
 
 int countSquares(vector<vector<int>>& arr)
 {
+
+    // INTUTION
+    /*
+        Look first create a dp of same dimensions
+        then fill the first row and column of the dp with the same values to that of the array
+        NOw loop from index 1
+        At each instance consider the current cell as the RIGHTMOST LOWER cell of the 2X2 square matrix
+        Now dp[i][j] = 1+min(previous3)(considering it as rightmost bottom of a 2X2 matrix)
+        Then calucalate the sum of all the elements in the dp array.
+
+    */
+
+
+
+
     int rows = arr.size();
     int cols = arr[0].size();
 
