@@ -18,7 +18,7 @@ public:
                 curr = prev;
             }
             
-            prev = curr;
+            prev = curr;5 
             curr=curr->next;
         }
         return head;
