@@ -13,7 +13,7 @@ int maxProfit(vector<int> wt, vector<int> profit, int sum, int ind)
 
     if(wt[ind-1]<=sum)
     {
-        return max(profit[ind-1]+maxProfit(wt,profit,sum-profit[ind-1], ind-1), maxProfit(wt,profit,sum,ind-1));
+        return max(profit[ind-1]+maxProfit(wt,profit,sum-wt[ind-1], ind-1), maxProfit(wt,profit,sum,ind-1));
     }
     else
     {
