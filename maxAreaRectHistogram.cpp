@@ -1,56 +1,59 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-int maxAreaHistogram(vector<int> arr)
+int maxAreaOfHistogram(vector<int> arr)
 {
+    int n = arr.size();
+    int maxArea = 0;
+    int top = 0;
     stack<int> stack;
-    int i=0;
-    int max_area, top;
-    while(i<arr.size())
-    {
-        if(stack.empty() or stack.top()<=arr[i])
-        {
-            stack.push(i++);
-        }
+    int ptr = 0;
 
+    while (ptr < n)
+    {
+        if (stack.empty() or arr[ptr] >= arr[stack.top()])
+        {
+            stack.push(ptr);
+            ptr++;
+        }
         else
         {
-            while(!stack.empty())
+            int height = arr[stack.top()];
+            stack.pop();
+
+            int width;
+            if (stack.size() == 0)
             {
-                top = stack.top();
-                stack.pop();
-                int area;
-                
-                if(stack.empty())
-                area = arr[top]*i;
-
-                else
-                {
-                    area = arr[top] *(i-stack.top()-1);
-                }
-                max_area = max(max_area, area);
+                width = ptr;
             }
+            else
+            {
+                width = ptr - stack.top() - 1;
+            }
+            int area = height * width;
+
+            maxArea = max(maxArea, area);
         }
-        
     }
-
-    while(!stack.empty())
+    while (!stack.empty())
     {
-        top = stack.top();
+        int height = arr[stack.top()];
         stack.pop();
-        int area;
-        
-        if(stack.empty())
-        area = arr[top]*i;
 
+        int width;
+        if (stack.size() == 0)
+        {
+            width = ptr;
+        }
         else
         {
-            area = arr[top] *(i-stack.top()-1);
+            width = ptr - stack.top() - 1;
         }
-        max_area = max(max_area, area);
-    }
-    return max_area;
+        int area = height * width;
 
+        maxArea = max(maxArea, area);
+    }
+    return maxArea;
 }
