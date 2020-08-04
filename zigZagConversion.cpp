@@ -1,55 +1,55 @@
-class Solution {
-public:
-
-string convert(string s, int numRows)
+class Solution
 {
-    if(numRows == 1)
+public:
+    string convert(string s, int numRows)
     {
-        return s;
-    }
-    if(numRows == 0)
-    {
-        return "";
-    }
-    vector<vector<char>> arr(numRows);
+        if (numRows == 1)
+        {
+            return s;
+        }
+        if (numRows == 0)
+        {
+            return "";
+        }
+        vector<vector<char>> arr(numRows);
 
-    int start = 0;
-    int end = numRows - 1;
-    int c = 0;
-    int index = 0;
+        int start = 0;
+        int end = numRows - 1;
+        int c = 0;
+        int index = 0;
 
-    for (auto ch : s)
-    {
-        if (index > end)
+        for (auto ch : s)
         {
-            index = end - 1;
-            c++;
-        }
-        else if (index < start)
-        {
-            index = start + 1;
-            c++;
-        }
+            if (index > end)
+            {
+                index = end - 1;
+                c++;
+            }
+            else if (index < start)
+            {
+                index = start + 1;
+                c++;
+            }
 
-        if (c % 2 == 0)
-        {
-            arr[index++].push_back(ch);
+            if (c % 2 == 0)
+            {
+                arr[index++].push_back(ch);
+            }
+            else
+            {
+                arr[index--].push_back(ch);
+            }
         }
-        else
+        string __word__ = "";
+        for (auto x : arr)
         {
-            arr[index--].push_back(ch);
+            for (auto c : x)
+            {
+                cout << c << " ";
+                __word__ += c;
+            }
+            cout << endl;
         }
+        return __word__;
     }
-    string __word__ = "";
-    for (auto x : arr)
-    {
-        for (auto c : x)
-        {
-            cout << c << " ";
-            __word__ += c;
-        }
-        cout << endl;
-    }
-    return __word__;
-}
 };
