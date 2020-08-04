@@ -61,6 +61,7 @@ vector<vector<char>> updateBoard(vector<vector<char>> &board, vector<int> &click
     {
         board[x][y] = 'X';
         return board;
+
     }
 
     int minesCount = getAdjacentMines(board, x, y);
