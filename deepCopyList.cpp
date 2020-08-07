@@ -1,4 +1,9 @@
-/*
+#include <bits/stdc++.h>
+#include <stdio.h>
+using namespace std;
+#define lli long long int
+
+
 // Definition for a Node.
 class Node {
 public:
@@ -12,7 +17,7 @@ public:
         random = NULL;
     }
 };
-*/
+
 
 class Solution {
 public:
@@ -28,7 +33,7 @@ public:
             hashmap[temp] = node;
             temp = temp->next;
         }
-        cout<<hashmap.size()<<endl;
+
         temp = head;
         while (temp!=NULL)
         {
@@ -36,7 +41,7 @@ public:
             temp = temp->next;
         }
         temp = head;
-        while(temp!=NULL)
+        while (temp!=NULL)
         {
             hashmap[temp]->next = hashmap[temp->next];
             temp = temp->next;
