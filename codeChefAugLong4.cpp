@@ -7,7 +7,6 @@ int main()
 {
     int t;
     scanf("%d", &t);
-    
     while (t--)
     {
         string s1, s2;
