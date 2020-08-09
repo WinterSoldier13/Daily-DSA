@@ -46,10 +46,8 @@ int main()
                 }
             }
         }
-
         stack<string> stack;
         stack.push(part2+s2);
-
         int insertLocation = 0;
         for(int i=0;i<part2.size();i++)
         {

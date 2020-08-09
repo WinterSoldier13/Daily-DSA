@@ -43,8 +43,14 @@ int dynamic(vector<int> &arr, int k)
     vector<int> dp(n, 0);
     dp[0] = k;
 
+    int bareMin = k;
+    unordered_map<int, int> hashmapTemp;
+    
+
     unordered_map<int, int> hashmap;
     hashmap[arr[0]]++;
+
+
 
     for (int i = 1; i < n; i++)
     {
@@ -53,10 +59,31 @@ int dynamic(vector<int> &arr, int k)
         {
             occur = hashmap[arr[i]];
             if (occur == 1)
-                dp[i] = min(dp[i - 1] + k, dp[i - 1] + 2);
+            {
+                // dp[i] = min(dp[i - 1] + k, dp[i - 1] + 2);
+                if(dp[i-1]+k  < dp[i-1]+2)
+                {
+                    dp[i] = dp[i-1]+k;
+                    hashmap.clear();
+                }
+                else
+                {
+                    dp[i] = dp[i-1] +2;
+                }
+                
+            }
             else
             {
-                dp[i] = min(dp[i - 1] + k, dp[i - 1] + 1);
+                // dp[i] = min(dp[i - 1] + k, dp[i - 1] + 1);
+                 if(dp[i-1]+k  < dp[i-1]+2)
+                {
+                    dp[i] = dp[i-1]+k;
+                    hashmap.clear();
+                }
+                else
+                {
+                    dp[i] = dp[i-1] +1;
+                }
             }
         }
         else
@@ -72,28 +99,27 @@ int dynamic(vector<int> &arr, int k)
 
 int main()
 {
-    int t;
-    scanf("%d", &t);
+    // int t;
+    // scanf("%d", &t);
 
-    while (t--)
-    {
-        int n, k;
-        scanf("%d %d", &n, &k);
-        vector<int> arr(n);
+    // while (t--)
+    // {
+    //     int n, k;
+    //     scanf("%d %d", &n, &k);
+    //     vector<int> arr(n);
 
-        for (int i = 0; i < n; i++)
-        {
-            scanf("%d", &arr[i]);
-        }
-        unordered_set<int> hashmap;
-        sort(arr.begin(), arr.end());
-        cout <<"RECURSION " <<1 + recurse(arr, arr.size(), k, hashmap, k) << endl;
-        cout << "DYNAMIC " <<dynamic(arr, k) << endl;
-    }
+    //     for (int i = 0; i < n; i++)
+    //     {
+    //         scanf("%d", &arr[i]);
+    //     }
+    //     unordered_set<int> hashmap;
+    //     cout <<"RECURSION " <<1 + recurse(arr, arr.size(), k, hashmap, k) << endl;
+    //     cout << "DYNAMIC " <<dynamic(arr, k) << endl;
+    // }
 
-    // unordered_set<int> hashmap;
-    // vector<int> arr = {3,5,4,5,1};
-    // int k = 2;
+    unordered_set<int> hashmap;
+    vector<int> arr = {1,2,1,2,1,2,1,2,1,2,1};
+    int k = 1;
 
-    // cout << 1+recurse(arr, arr.size(), k, hashmap, k) << endl;
+    cout << 1+recurse(arr, arr.size(), k, hashmap, k) << endl;
 }
