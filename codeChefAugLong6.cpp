@@ -12,7 +12,6 @@ void __init__(int n)
 }
 
 
-
 int findMaxFreq(vector<int> &arr)
 {
     unordered_map<int, int> hashmap;
