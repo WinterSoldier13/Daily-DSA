@@ -15,7 +15,6 @@ void __init__(int n)
 
 int findMaxFreq(vector<int> &arr)
 {
-
     unordered_map<int, int> hashmap;
     for (int x : arr)
     {
@@ -34,7 +33,6 @@ int findMaxFreq(vector<int> &arr)
             maxFreq = freq;
         }
     }
-
     if (maxNumber == INT16_MAX)
     {
         return -1;
@@ -105,10 +103,12 @@ int main()
         out = temp;
         printCombinations(arr, i, support);
 
-        auto te = out;
+        
 
-        for (auto x : te)
-            cout << x << " ";
-        cout << endl;
+        for(int i=0;i<n;i++)
+        {
+            printf("%d ", out[i]);
+        }
+        printf("\n");
     }
 }
