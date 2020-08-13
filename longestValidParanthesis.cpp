@@ -1,42 +1,47 @@
-class Solution {
-public:
-
-int longestValidParentheses(string s)
+class Solution
 {
-    stack<int> stack;
-    stack.push(-1);
+public:
+    // DO watch
+    // https://www.youtube.com/watch?v=r0-zx5ejdq0
 
-    int l = s.size();
-    int maxLen = 0;
-
-    for(int i=0;i<l;i++)
+    int longestValidParentheses(string s)
     {
-        char ch = s[i];
+        stack<int> stack;
+        stack.push(-1);
 
-        if(ch == '(')
-        {
-            stack.push(i);
-        }
-        else
-        {
-            int stackTop = stack.top();
-            if(stackTop!=-1){
-            char atTop = s[stackTop];
+        int l = s.size();
+        int maxLen = 0;
 
-            if(atTop == '(')
+        for (int i = 0; i < l; i++)
+        {
+            char ch = s[i];
+
+            if (ch == '(')
             {
-                stack.pop();
-                maxLen = max(maxLen, i-stack.top());
+                stack.push(i);
             }
             else
             {
-                stack.push(i);
-            }}
-            else
-                stack.push(i);
+                int stackTop = stack.top();
+                if (stackTop != -1)
+                {
+                    char atTop = s[stackTop];
+
+                    if (atTop == '(')
+                    {
+                        stack.pop();
+                        maxLen = max(maxLen, i - stack.top());
+                    }
+                    else
+                    {
+                        stack.push(i);
+                    }
+                }
+                else
+                    stack.push(i);
+            }
         }
+        cout << maxLen << endl;
+        return maxLen;
     }
-    cout<<maxLen<<endl;
-    return maxLen;
-}
 };
