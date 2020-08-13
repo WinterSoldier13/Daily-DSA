@@ -89,7 +89,7 @@ bool dynamic(vector<int> arr, int sum)
 // THe point is for every S1 on the numberline from 0 to S their exist a number for S2 on the same number line
 // Therefore we can constrain the value of S1 from 0 to S/2
 // Now for these values not all will be the sum of a subset from arr ex. {1,5,7} will never have 4 as a sum of subset
-// Hence Check for 0 to S/2 which numbers are possible as subset from the above program
+// Hence Check for 0 to S/2 which numbers are possible as subset from the above program 
 // In the above program dp[last_row][N] will give 1 if N can be a sum of subset.. then return the minimum
 
 //LET's IMPLEMENT IT once AGAIN
