@@ -7,40 +7,37 @@ vector<vector<int>> mem;
 
 void __init__(int m, int n)
 {
-    vector<int> t(n+1, -1);
-    vector<vector<int>> temp(m+1, t);
+    vector<int> t(n + 1, -1);
+    vector<vector<int>> temp(m + 1, t);
     mem = temp;
 }
 int recurse(string s1, string s2, string s3, int i, int j, int k)
 {
-    if(mem[i][j] != -1)
+    if (mem[i][j] != -1)
     {
         return mem[i][j];
     }
-    if(i==s1.size() and j == s2.size() and k==s3.size())
+    if (i == s1.size() and j == s2.size() and k == s3.size())
     {
         return mem[i][j] = 1;
     }
     int res = 0;
-    if(i<s1.size())
+    if (i < s1.size())
     {
-        if(s1[i] == s3[k])
+        if (s1[i] == s3[k])
         {
-            res = res or recurse(s1, s2, s3,i+1,j,k+1);
+            res = res or recurse(s1, s2, s3, i + 1, j, k + 1);
         }
     }
-    if(j<s2.size())
+    if (j < s2.size())
     {
-        if(s2[j] == s3[k])
+        if (s2[j] == s3[k])
         {
-            res = res or recurse(s1, s2, s3,i,j+1,k+1);
+            res = res or recurse(s1, s2, s3, i, j + 1, k + 1);
         }
     }
 
     return mem[i][j] = res;
-
-
-
 }
 
 int isInterleave(string s1, string s2, string s3)
@@ -56,9 +53,5 @@ int main()
     string s2 = "dbbca";
     string s3 = "aadbbcbcac";
 
-    cout<<isInterleave(s1, s2, s3)<<endl;
-
-    
-
-
+    cout << isInterleave(s1, s2, s3) << endl;
 }
