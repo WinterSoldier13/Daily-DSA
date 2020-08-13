@@ -17,7 +17,7 @@ int lcs(string s1, string s2, int p1, int p2)
         return 0;
     }
     if(s1[p1-1] == s2[p2-1])
-    {
+    {    
         return 1 + lcs(s1,s2,p1-1,p2-1);
     }
     else
