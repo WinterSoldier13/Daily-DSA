@@ -1,28 +1,26 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 vector<string> mothership;
-void backtracking(unordered_map<int, string> &hashmap, string s, string digits, int i )
+
+void backtracking(unordered_map<int, string> &hashmap, string s, string digits, int i)
 {
-    if(s.size() == digits.size())
+    if (s.size() == digits.size())
     {
         mothership.push_back(s);
     }
     char curr = digits[i];
 
-    for(char ch: hashmap[curr])
+    for (char ch : hashmap[curr])
     {
-        backtracking(hashmap, s+ch, digits, i+1);
+        backtracking(hashmap, s + ch, digits, i + 1);
     }
-
-
 }
 
-
-vector<string> letterCombinations(string digits) 
+vector<string> letterCombinations(string digits)
 {
-    unordered_map<int,string> hashmap;
+    unordered_map<int, string> hashmap;
     hashmap['2'] = "abc";
     hashmap['3'] = "def";
     hashmap['4'] = "ghi";
@@ -31,13 +29,10 @@ vector<string> letterCombinations(string digits)
     hashmap['7'] = "pqrs";
     hashmap['8'] = "tuv";
     hashmap['9'] = "wxyz";
-    string s="";
+    string s = "";
     backtracking(hashmap, s, digits, 0);
-    
+
     return mothership;
-    
-    
-    
 }
 
 int main()
@@ -45,9 +40,8 @@ int main()
     string digits = "234";
 
     vector<string> temp = letterCombinations(digits);
-    for(auto c: temp)
+    for (auto c : temp)
     {
-        cout<<c<<endl;
+        cout << c << endl;
     }
-    
 }
