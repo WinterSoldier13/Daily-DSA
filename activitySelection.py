@@ -15,13 +15,13 @@ for z in range(t):
 		slots.append([end[i], start[i]])
 	slots = sorted(slots)
 
-	# print(slots)
+	print(slots)
 
 	for i in range(len(slots)):
 		temp = slots[i][0]
 		slots[i][0] = slots[i][1]
 		slots[i][1] = temp
-	# print(slots)
+	print(slots)
 
 	stack=[]
 
@@ -33,6 +33,6 @@ for z in range(t):
 			continue
 		else:
 			stack.append(slot)
-
+	print(stack)
 	print(len(stack))
 	
