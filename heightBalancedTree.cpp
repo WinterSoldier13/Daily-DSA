@@ -11,7 +11,7 @@ struct Node
         left = right = NULL;
     }
 };
- */
+ 
 
 // This function should return tree if passed  tree 
 // is balanced, else false. 
