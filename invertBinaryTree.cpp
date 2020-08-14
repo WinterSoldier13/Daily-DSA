@@ -16,22 +16,19 @@ struct Node
 }; */
 
 /* Should convert tree to its mirror */
-void mirror(Node* node) 
+void mirror(Node *node)
 {
-     // Your Code Here
-     
-     if(node == NULL)
-     return;
-     
-     Node* left = node->left;
-     Node* right = node->right;
-     Node* temp = left;
-     
-     node->left = right;
-     node->right = temp;
-     mirror(node->left);
-     mirror(node->right);
-     
-     
-     
+    // Your Code Here
+
+    if (node == NULL)
+        return;
+
+    Node *left = node->left;
+    Node *right = node->right;
+    Node *temp = left;
+
+    node->left = right;
+    node->right = temp;
+    mirror(node->left);
+    mirror(node->right);
 }
