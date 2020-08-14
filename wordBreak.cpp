@@ -9,17 +9,6 @@ public:
         {
             return mem[str];
         }
-        if (dict.size() == 1)
-        {
-            if (dict.find(str) != dict.end())
-            {
-                return mem[str] = true;
-            }
-            else
-            {
-                return mem[str] = false;
-            }
-        }
 
         if (str.size() == 0)
         {
