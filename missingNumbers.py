@@ -47,5 +47,4 @@ class Solution:
 				return(i)
 
 arr= [2,0]
-print(Solution().missingNumber(arr)
-)
+print(Solution().missingNumber(arr))
