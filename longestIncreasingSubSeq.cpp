@@ -1,21 +1,6 @@
 class Solution
 {
 public:
-    int recurse(vector<int> &arr, int index)
-    {
-        if (index == 0)
-        {
-            return 0;
-        }
-        if (arr[index - 1] > arr[index - 2])
-        {
-            return 1 + recurse(arr, index - 1);
-        }
-        else
-        {
-            return recurse(arr, index - 1);
-        }
-    }
 
     int dp(vector<int> arr)
     {
