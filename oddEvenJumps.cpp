@@ -19,7 +19,8 @@ int oddEvenJumps(vector<int> &a)
 
     // Defining two arrays for dp
     // arr[i] stores whether it is possible to reach the end if current iteration is the even or odd resp.
-    vector<bool> low(a.size()), high(a.size());
+    vector<bool> low(a.size());
+    vector<bool> high(a.size());
 
     // FOr the last it is always true
     low[n - 1] = 1, high[n - 1] = 1;
