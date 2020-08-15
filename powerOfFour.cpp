@@ -24,7 +24,6 @@ bool isPowerOfFour(int num)
             {
                 return false;
             }
-            
         }
         num = num >> 1;
         index++;
