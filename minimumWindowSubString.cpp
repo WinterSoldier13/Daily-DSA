@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// s = ADOBEC ODEBANC
+// s = ADOBECODEBANC
 // t = abc
 // out = banc
 
