@@ -23,7 +23,7 @@ int majorityElement(vector<int> arr)
           {
                count--;
           }
-          if(!count)
+          if(count == 0)
           {
                count=1;
                majority_index=i;
