@@ -15,7 +15,6 @@ int isCoprime(int a, int b)
 {
     return __gcd(a,b)==1;
 }
-
 void bfs(vector<vector<int>> &graph, vector<int> &val, int index, vector<int> &out)
 {
     queue<int> q;
