@@ -12,7 +12,6 @@ public:
     {
         vector<int> temp(w.size());
         cummulativeFreq = temp;
-
         cummulativeFreq[0] = w[0];
         for (int i = 1; i < w.size(); i++)
         {
@@ -23,9 +22,7 @@ public:
     int pickIndex()
     {
         int num = 1 + rand() % cummulativeFreq[cummulativeFreq.size() - 1];
-
         int index = 0;
-
         for (auto x : cummulativeFreq)
         {
             if (num < x)
