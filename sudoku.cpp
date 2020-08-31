@@ -86,7 +86,6 @@ bool isSafe(int num, int row, int col)
 }
 
 
-
 pair<int,int> findZ()
 {
      for(int i=0;i<9;i++)
@@ -101,7 +100,6 @@ pair<int,int> findZ()
      }
      return make_pair(-1,-1);
 }
-
 bool sudoku()
 {
      if(findZ().first==-1)
@@ -110,9 +108,6 @@ bool sudoku()
      }
      int row = findZ().first;
      int col = findZ().second;
-
-     
-
      for(int i=1;i<=9;i++)
      {
           if(isSafe(i,row,col))
@@ -128,12 +123,7 @@ bool sudoku()
           
      }
      return false;
-
 }
-
-
-
-
 int main()
 {
     vector<string> arr{"53..7....",
