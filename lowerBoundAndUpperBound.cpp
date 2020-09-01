@@ -1,3 +1,7 @@
+#include <bits/stdc++.h>
+#include <stdio.h>
+using namespace std;
+#define lli unsigned long long int
 
 int lowerBound(vector<int> &arr, int k)
 {
@@ -53,4 +57,7 @@ int upperBound(vector<int> &arr, int k)
         }
     }
     return ans;
+}
+int main()
+{
 }
