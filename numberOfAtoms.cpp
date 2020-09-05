@@ -242,7 +242,6 @@ int main()
     // string formula = "H2O";
     // string formula = "Mg(OH)2";
     // string formula = "K4(ON(SO3)2)2";
-    Solution ob;
     cout << usingStack(formula) << endl;
 
     return 1;
