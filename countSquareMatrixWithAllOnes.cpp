@@ -14,10 +14,6 @@ int countSquares(vector<vector<int>>& arr)
         Then calucalate the sum of all the elements in the dp array.
 
     */
-
-
-
-
     int rows = arr.size();
     int cols = arr[0].size();
 
