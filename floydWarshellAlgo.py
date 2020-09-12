@@ -25,6 +25,6 @@ while(t!=0):
 
 	for i in range(n):
 		for j in range(n):
-			print(str(dist[i][j]),end=" ")
+			print((dist[i][j])==10000000?'INF':dist[i][j],end=" ")
 		print()
 	t-=1
