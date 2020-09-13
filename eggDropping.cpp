@@ -32,8 +32,6 @@ int mcm(int egg, int floor)
         min_ = min(min_ , tempAns);
     }
     return mem[egg][floor]=min_;
-
-
 }
 
 
