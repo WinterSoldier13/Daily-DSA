@@ -52,7 +52,6 @@ int coinChange(vector<int> &arr, int sum)
 
     for (int i = 1; i < dp.size(); i++)
     {
-        bool flag = true;
 
         for (int j = 0; j < arr.size(); j++)
         {
@@ -60,11 +59,8 @@ int coinChange(vector<int> &arr, int sum)
             if (coin <= i)
             {
                 dp[i] = min(dp[i], dp[i - coin] + 1);
-                flag = false;
             }
         }
-        // if(flag)
-        //     dp[i]=-1;
     }
 
     if (dp[sum] == INT32_MAX - 1)
