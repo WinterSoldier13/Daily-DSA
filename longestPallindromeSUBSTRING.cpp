@@ -1,3 +1,7 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
 class Solution {
 public:
     
@@ -42,3 +46,9 @@ public:
         
     }
 };
+
+int main()
+{
+    Solution ob;
+    cout<<ob.longestPalindrome("mactacocatbook")<<endl;
+}
