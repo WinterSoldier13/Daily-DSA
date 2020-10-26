@@ -44,3 +44,39 @@ int spanningTree(int V, int E, vector<vector<int>> &graph)
     }
     return count;
 }
+
+int convertToMatrix(int V, vector<vector<int>> &graph)
+{
+	vector<int> t(V, 0);
+	vector<vector<int>> arr(V, t);
+
+	for(int i=0;i<V;i++)
+	{
+		for(auto x: graph[i])
+		{
+			arr[i][x] = 1;
+			arr[x][i] = 1;
+		}
+	}
+	for(auto x: arr)
+	{
+		for(auto i: x)
+		{
+			cout<<i<<" ";
+		}
+		cout<<endl;
+	}
+	return spanningTree(V, V-1, arr);
+}
+
+
+int main()
+{
+	vector<vector<int>> arr{{1,2,3}, {0}, {0}, {0}};
+	int V = 4;
+	int E = 3;
+	
+	cout<<convertToMatrix(V, arr)<<endl;
+
+	return 0;
+}
