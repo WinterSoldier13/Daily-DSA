@@ -147,4 +147,8 @@ int main()
 
     string s = "11010111";
     cout<<solve(s)<<endl;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 17cf60c95e6f4c02d323dfb4aa9b9d8fc29f1408
