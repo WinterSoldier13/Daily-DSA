@@ -22,11 +22,14 @@ int recurse(string s, int index)
     {
         return mem[index]=1;
     }
+
+    // first consider only 1 char
     int val1 =0 ;
     if(s[index]!='0')
         val1 = recurse(s,index+1);
+
+    // this time consider 2 chars like 13 -> n
     int val2=0;
-    
     char ch = s[index];
     
     if(index<s.size()-1)
