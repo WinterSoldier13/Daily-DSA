@@ -12,11 +12,6 @@ class Solution
 public:
     int X;
     int Y;
-    int getValue(int x1, int y1, int x2, int y2)
-    {
-        int value = ((y2 - Y) * (x1 - X)) - ((y1 - Y) * (x2 - X));
-        return value;
-    }
 
     bool operator()(pair<int,int> point1, pair<int,int> point2)
     {
@@ -26,7 +21,7 @@ public:
             int x2 = point2.first;
             int y2 = point2.second;
 
-            int value = getValue(x1, y1, x2, y2);
+            int value = ((y2 - Y) * (x1 - X)) - ((y1 - Y) * (x2 - X));
 
             if (value <= 0)
             {
@@ -79,8 +74,9 @@ public:
             }
             arr.push_back({x[0], x[1]});
         }
-        sort(arr.begin(), arr.end() , Solution() );
+        cout<<X<<" "<<Y<<endl;
 
+        sort(arr.begin(), arr.end() , operator() );
 
         for(auto x: arr)
         {
