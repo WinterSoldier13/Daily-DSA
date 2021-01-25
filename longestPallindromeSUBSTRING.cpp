@@ -41,7 +41,7 @@ public:
                 end = i+ len/2;
             }
         }
-        string S = ;
+        
         return s.substr(start, end-start+1);
         
         
