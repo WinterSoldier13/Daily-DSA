@@ -1,8 +1,5 @@
-#include</home/wintersoldier/Desktop/test/pycpp.cpp>
 #include<bits/stdc++.h>
 using namespace std;
-
-utils ob;
 
 vector<vector<int>> twoSum(vector<int> nums, int target, int forbiddenIndex1, int forbiddenIndex2)
 {
@@ -105,8 +102,8 @@ vector<vector<int>> fourSum(vector<int>& nums, int target)
 
 int main()
 {
-    vector<int> temp{1,0,-1,0,-2,2};
-    int target = 0;
+    vector<int> temp{10,2,3,4,5,7,8};
+    int target = 23;
 
     for(auto x: fourSum(temp, target))
     {
