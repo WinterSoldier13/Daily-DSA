@@ -38,10 +38,12 @@ vector<int> diagonal(Node *root)
 
     for(int i=0;i<hashmap.size();i++)
     {
+        int sum = 0;
         for(auto x: hashmap[i])
         {
-            out.push_back(x);
+            sum+=x;
         }
+        out.push_back(sum);
     }
 
     return out;
