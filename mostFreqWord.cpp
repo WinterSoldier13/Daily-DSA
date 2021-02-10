@@ -5,64 +5,34 @@ using namespace std;
 #define lli unsigned long long int
 #define pii pair<int, int>
 
-string mostFrequentWord(string arr[], int n)
+class Solution
 {
-    unordered_map<string, int> hashmap;
-
-    for (int i = 0; i < n; i++)
+public:
+    int count;
+    void recurse(vector<int> adj[], int index, int dest)
     {
-        hashmap[arr[i]]++;
-    }
-
-    priority_queue<pair<int, string>> pq;
-
-    for (auto it = hashmap.begin(); it != hashmap.end(); it++)
-    {
-        pq.push({it->second, it->first});
-    }
-
-    unordered_set<string> candidates;
-
-    int maxS = 0;
-    while (!pq.empty())
-    {
-        auto top = pq.top();
-        pq.pop();
-
-        if (top.first >= maxS)
+        if (index == dest)
         {
-
-            candidates.insert(top.second);
-            maxS = top.first;
+            count++;
+            return;
         }
-        else
+
+        for (auto x : adj[index])
         {
-            break;
+            recurse(adj, x, dest);
         }
     }
-
-    for (int i = 0; i < n; i++)
+    int countPaths(int V, vector<int> adj[], int source, int destination)
     {
-        if (candidates.size() == 1)
-        {
-            break;
-        }
-        if (candidates.count(arr[i]))
-        {
-            candidates.erase(arr[i]);
-        }
+        count = 0;
+
+        recurse(adj, source, destination);
+
+        return count;
     }
-
-    auto it = candidates.begin();
-
-    return *it;
-}
-
+};
 int main()
 {
-    string arr[] = {"budxdu", "budxdu", "akfwn", "akfwn", "budxdu", "akfwn", "suoko", "akfwn", "budxdu", "dhxeg", "suoko", "akfwn", "dhxeg"};
-    int n = 13;
 
-    cout << mostFrequentWord(arr, n) << endl;
     return 0;
 }
