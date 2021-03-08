@@ -11,19 +11,21 @@ using namespace std;
 #define lli unsigned long long int
 #define pii pair<int, int>
 
+
 class Solution
 {
+    #define ll long long
 private:
-    vector<vector<int>> sumCache;
-    vector<vector<int>> recursionCache;
+    unordered_map<int, unordered_map<int,ll> > sumCache; 
+    unordered_map<int, unordered_map<int,ll> > recursionCache; 
 
-    int getArraySum(vector<int> arr, int start, int end)
+    ll getArraySum(vector<int> arr, int start, int end)
     {
-        if (sumCache[start][end] != -1)
+        if (sumCache.find(start) != sumCache.end() and sumCache[start].find(end) != sumCache[start].end())
         {
             return sumCache[start][end];
         }
-        int sum = 0;
+        ll sum = 0;
         for (int i = start; i <= end; i++)
         {
             sum += arr[i];
@@ -31,9 +33,9 @@ private:
         return sumCache[start][end] = sum;
     }
 
-    int recurse(vector<int> arr, int n, int k)
+    ll recurse(vector<int> arr, int n, int k)
     {
-        if (recursionCache[n][k] != -1)
+        if (recursionCache.find(n) != recursionCache.end() and recursionCache[n].find(k) != recursionCache[n].end())
         {
             return recursionCache[n][k] = recursionCache[n][k];
         }
@@ -45,10 +47,10 @@ private:
         {
             return recursionCache[n][k] = getArraySum(arr, 0, n - 1);
         }
-        int bestValue = INT_MAX;
+        ll bestValue = INT_MAX;
         for (int i = 1; i <= n; i++)
         {
-            int result = max(recurse(arr, i, k - 1), getArraySum(arr, i, n - 1));
+            ll result = max(recurse(arr, i, k - 1), getArraySum(arr, i, n - 1));
             bestValue = min(bestValue, result);
         }
         return recursionCache[n][k] = bestValue;
@@ -57,8 +59,8 @@ private:
 public:
     Solution()
     {
-        sumCache = vector<vector<int>>(1000, vector<int>(1000, -1));
-        recursionCache = vector<vector<int>>(1000, vector<int>(1000, -1));
+        sumCache.clear();
+        recursionCache.clear();
     }
     void solve(vector<int> arr, int n, int k)
     {
