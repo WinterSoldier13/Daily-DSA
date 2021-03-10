@@ -11,33 +11,31 @@ using namespace std;
 #define lli unsigned long long int
 #define pii pair<int, int>
 
-// https://practice.geeksforgeeks.org/problems/pots-of-gold-game/1/?category[]=Dynamic%20Programming&category[]=Dynamic%20Programming&problemStatus=unsolved&difficulty[]=1&page=1&sortBy=submissions&query=category[]Dynamic%20ProgrammingproblemStatusunsolveddifficulty[]1page1sortBysubmissionscategory[]Dynamic%20Programming
-
 class Solution
 {
-    public:
+public:
     vector<vector<int>> recursionCache;
 
     Solution()
     {
-        recursionCache = vector<vector<int>> (1001, vector<int> (1001, -1));
+        recursionCache = vector<vector<int>>(1001, vector<int>(1001, -1));
     }
     int recurse(int arr[], int start, int end)
     {
-        if(recursionCache[start][end] != -1)
+        if (recursionCache[start][end] != -1)
         {
-            return recursionCache[start][end]=recursionCache[start][end];
+            return recursionCache[start][end] = recursionCache[start][end];
         }
         if (end - start == 1)
         {
-            return recursionCache[start][end]=max(arr[start], arr[end]);
+            return recursionCache[start][end] = max(arr[start], arr[end]);
         }
         if (end - start == 0)
         {
-            return recursionCache[start][end]=arr[start];
+            return recursionCache[start][end] = arr[start];
         }
 
-        return recursionCache[start][end]=max(arr[start] + min(recurse(arr, start + 1, end - 1), recurse(arr, start + 2, end)), arr[end] + min(recurse(arr, start + 1, end - 1), recurse(arr, start, end - 2)));
+        return recursionCache[start][end] = max(arr[start] + min(recurse(arr, start + 1, end - 1), recurse(arr, start + 2, end)), arr[end] + min(recurse(arr, start + 1, end - 1), recurse(arr, start, end - 2)));
     }
 };
 int maxCoins(int arr[], int N)
