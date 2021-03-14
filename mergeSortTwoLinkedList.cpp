@@ -22,23 +22,42 @@ struct Node
     }
 };
 
-Node *merge(Node *l1, Node *l2)
+#define ListNode Node
+#define val data
+ListNode *merge(ListNode *l1, ListNode *l2)
 {
-    if (!l1)
-        return l2;
-    if (!l2)
-        return l1;
+    ListNode *h1 = l1;
+    ListNode *h2 = l2;
 
-    if (l1->data < l2->data)
+    ListNode *head = new ListNode(0);
+
+    ListNode *track = head;
+
+    while (h1 != NULL and h2 != NULL)
     {
-        l1->next = merge(l1->next, l2);
-        return l1;
+        if (h1->val <= h2->val)
+        {
+            track->next = h1;
+            h1 = h1->next;
+        }
+        else
+        {
+            track->next = h2;
+            h2 = h2->next;
+        }
+        track = track->next;
     }
-    else
+    if (h1 != NULL)
     {
-        l2->next = merge(l1, l2->next);
-        return l2;
+        track->next = h1;
     }
+    if (h2 != NULL)
+    {
+        track->next = h2;
+    }
+    head = head->next;
+
+    return head;
 }
 
 Node *mergeSort(Node *head)
