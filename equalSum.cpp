@@ -51,6 +51,6 @@ public:
 int main()
 {
     fast_cin();
-
+    
     return 0;
 }
