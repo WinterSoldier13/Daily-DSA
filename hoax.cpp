@@ -11,6 +11,93 @@ using namespace std;
 #define lli unsigned long long int
 #define pii pair<int, int>
 
+
+
+// IN CASE OF TLE 
+
+
+
+// class Solution
+// {
+// public:
+//     vector<int> p, rk;
+
+//     int getp(int v)
+//     {
+//         if (v == p[v])
+//             return v;
+//         return p[v] = getp(p[v]);
+//     }
+
+//     long long res;
+
+//     long long get(int cnt)
+//     {
+//         return cnt * 1ll * (cnt - 1) / 2;
+//     }
+
+//     void merge(int u, int v)
+//     {
+//         u = getp(u);
+//         v = getp(v);
+
+//         if (rk[u] < rk[v])
+//             swap(u, v);
+
+//         res -= get(rk[u]);
+//         res -= get(rk[v]);
+
+//         rk[u] += rk[v];
+
+//         res += get(rk[u]);
+
+//         p[v] = u;
+//     }
+
+//     vector<int> maximumWeight(int n, vector<vector<int>> edges, int m, vector<int> &queries)
+//     {
+//         res = 0;
+//         p = rk = vector<int>(n, 1);
+//         iota(p.begin(), p.end(), 0);
+//         vector<pair<int, pair<int, int>>> e(n - 1);
+//         for (int i = 0; i < n - 1; ++i)
+//         {
+//             e[i].second.first = edges[i][0];
+//             e[i].second.second = edges[i][1];
+//             e[i].first = edges[i][2];
+
+//             --e[i].second.first;
+//             --e[i].second.second;
+//         }
+//         vector<pair<int, int>> q(m);
+//         vector<int> ans(m);
+
+//         for (int i = 0; i < m; ++i)
+//         {
+//             q[i].first = queries[i];
+//             q[i].second = i;
+//         }
+//         sort(e.begin(), e.end());
+//         sort(q.begin(), q.end());
+//         int pos = 0;
+//         for (int i = 0; i < m; ++i)
+//         {
+//             while (pos < n - 1 && e[pos].first <= q[i].first)
+//             {
+//                 int u = e[pos].second.first;
+//                 int v = e[pos].second.second;
+//                 merge(u, v);
+//                 ++pos;
+//             }
+//             ans[q[i].second] = res;
+//         }
+
+//         return ans;
+//     }
+// };
+
+
+
 class Solution
 {
 private:
