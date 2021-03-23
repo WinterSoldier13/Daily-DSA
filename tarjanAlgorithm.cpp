@@ -30,6 +30,8 @@ private:
 
                 low[current] = min(low[current], low[node]);
             }
+
+            // if it is a backedge
             else if (inStack[node])
             {
                 low[current] = min(low[current], disc[node]);
