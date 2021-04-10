@@ -18,21 +18,20 @@ private:
     {
         int ans = -1;
 
-        while (start<=end)
+        while (start <= end)
         {
-            int mid = start + (end-start)/2;
+            int mid = start + (end - start) / 2;
 
-            if(arr[mid]>=d)
+            if (arr[mid] >= d)
             {
                 ans = mid;
-                start = mid+1;
+                start = mid + 1;
             }
             else
             {
-                end = mid-1;
+                end = mid - 1;
             }
         }
-
         return ans;
     }
 
@@ -40,7 +39,6 @@ public:
     vector<int> nextPermutation(int n, vector<int> arr)
     {
         int d = -1;
-
 
         // step 0: first find a number starting from the right hand side
         // which is less than the previous number
@@ -59,7 +57,7 @@ public:
         }
 
         // step 1: find the smallest number greater than arr[d] on the right side of d
-        int ansIndex = binarySearch(arr, d+1, n-1, arr[d]);
+        int ansIndex = binarySearch(arr, d + 1, n - 1, arr[d]);
 
         // step2 : Swap them
         swap(arr[d], arr[ansIndex]);
@@ -67,7 +65,7 @@ public:
         //step 3 sort from index d+1 to the end
         // remeber it was already in decreasing order
 
-        reverse(arr.begin()+d+1, arr.end());
+        reverse(arr.begin() + d + 1, arr.end());
 
         return arr;
     }

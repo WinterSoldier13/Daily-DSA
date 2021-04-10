@@ -15,120 +15,34 @@ using namespace std;
 
 class Solution
 {
-private:
-    int isPrime(int num)
-    {
-        for (int i = 2; i * i <= num; i++)
-            if (num % i == 0)
-                return 0;
-        return 1;
-    }
-    vector<int> mat;
-    void fillMat()
-    {
-        mat = vector<int>(10001, 0);
-        for (int i = 1; i < 10000; i++)
-        {
-            mat[i] = isPrime(i);
-        }
-    }
-    vector<vector<int>> graph;
-    void makeGraph()
-    {
-        graph = vector<vector<int>>(10000);
-        for (int i = 1000; i < 10000; i++)
-        {
-            if (mat[i])
-            {
-                string num = to_string(i);
-                for (int j = 0; j < 4; j++)
-                {
-                    char ch = num[j];
-
-                    for (char x = '0'; x <= '9'; x++)
-                    {
-                        if (x == ch)
-                            continue;
-                        string temp = num;
-                        temp[j] = x;
-                        if (mat[stoi(temp)] and temp.size() == 4)
-                        {
-                            graph[stoi(num)].push_back(stoi(temp));
-                            graph[stoi(temp)].push_back(stoi(num));
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    void printGraph()
-    {
-        int index = 0;
-        for (auto x : graph)
-        {
-            cout << index++ << " : ";
-            for (auto c : x)
-                cout << c << " ";
-            cout << endl;
-        }
-    }
-
-    int bfs(int num1, int num2)
-    {
-        queue<int> q;
-        int minPath = INT_MAX;
-
-        q.push(num1);
-        unordered_set<int> track;
-        track.insert(num1);
-        bool found = false;
-        int count = 0;
-        while (!q.empty())
-        {
-            int l = q.size();
-            count++;
-            // cout << endl;
-            for (int i = 0; i < l; i++)
-            {
-                auto curr = q.front();
-                q.pop();
-
-                if (curr == num2)
-                {
-                    // cout << "found" << curr << endl;
-                    found = true;
-                    break;
-                }
-                for (auto node : graph[curr])
-                {
-                    if (track.count(node) == 0)
-                    {
-                        track.insert(node);
-                        // cout << node << endl;
-                        q.push(node);
-                    }
-                }
-            }
-            if (found)
-                break;
-        }
-        if (found == false)
-            return -1;
-        return count;
-    }
-
 public:
-    int solve(int num1, int num2)
+    int binarySearchable(int arr[], int n)
     {
-        if (num1 == num2)
+        vector<int> left;
+        vector<int> right;
+
+        left.push_back(arr[0]);
+        for (int i = 1; i < n; i++)
         {
-            return 0;
+            left.push_back(max(left[left.size() - 1], arr[i]));
         }
-        fillMat();
-        makeGraph();
-        // printGraph();
-        return bfs(num1, num2) - 1;
+
+        right.push_back(arr[n - 1]);
+        for (int i = n - 2; i >= 0; i--)
+        {
+            right.push_back(min(right[right.size() - 1], arr[i]));
+        }
+        reverse(right.begin(), right.end());
+        int ans = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (left[i] <= arr[i] and right[i] >= arr[i])
+            {
+                ans++;
+            }
+        }
+        return ans;
     }
 };
 

@@ -66,12 +66,6 @@ int dynamic(vector<int> arr, int sum)
 
 
 // O(N)space
-
-one
-edit
-play_arrow
-
-brightness_5
 int count( int S[], int m, int n ) 
 { 
     // table[i] will be storing the number of solutions for 
