@@ -5,7 +5,7 @@ class Solution
 {
 public:
     unordered_map<string, int> mem;
-
+// recursive
     bool recurse(string str, unordered_map<string, int> dict)
     {
         if (mem.find(str) != mem.end())
@@ -30,11 +30,13 @@ public:
         }
         return mem[str] = false;
     }
+
+    // dynamic
     bool wordBreak(string s, vector<string> &B)
     {
-        unordered_map<string, int> hashmap;
-        for (auto x : B)
-            hashmap[x] = 1;
+        unordered_set<string> hashset;
+        for(auto x: B)
+            hashset.insert(x);
 
         int l = s.size();
 
@@ -45,7 +47,7 @@ public:
         {
             for (int j = 0; j < i; j++)
             {
-                if (dp[j] and hashmap.find(s.substr(j, i - j)) != hashmap.end())
+                if (dp[j] and hashset.count(s.substr(j, i - j)))
                 {
                     dp[i] = true;
                     break;
