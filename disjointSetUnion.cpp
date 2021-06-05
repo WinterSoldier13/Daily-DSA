@@ -95,7 +95,6 @@ public:
 
 int main()
 {
-
     DisjointSet ob;
     ob.solve(9);
     return 0;
