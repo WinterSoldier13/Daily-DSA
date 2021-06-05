@@ -12,43 +12,16 @@ private:
         int parentOfNode1 = getParent(node1);
         int parentOfNode2 = getParent(node2);
 
-        if (parentOfNode1 == parentOfNode2)
+        if (parentOfNode1 != parentOfNode2)
         {
-            return;
-        }
-        else
-        {
-            int rankOfNode1 = rank[node1];
-            int rankOfNode2 = rank[node2];
+            if (rank[parentOfNode1] < rank[parentOfNode2])
+                swap(parentOfNode1, parentOfNode2);
 
-            if (rankOfNode1 == rankOfNode2)
-            {
-                if (node1 < node2)
-                {
-                    parent[node2] = node1;
-                    rank[node1] += rank[node2];
-                }
-                else
-                {
-                    parent[node1] = node2;
-                    rank[node2] += rank[node1];
-                }
-            }
-            else
-            {
-                if (rankOfNode1 > rankOfNode2)
-                {
-                    parent[node2] = node1;
-                    rank[node1] += rank[node2];
-                }
-                else
-                {
-                    parent[node1] = node2;
-                    rank[node2] += rank[node1];
-                }
-            }
+            parent[parentOfNode2] = parentOfNode1;
+            rank[parentOfNode1] += rank[parentOfNode2];
         }
     }
+
     int getParent(int node)
     {
         int curr = node;
