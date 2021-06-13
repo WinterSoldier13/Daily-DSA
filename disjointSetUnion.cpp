@@ -39,6 +39,7 @@ private:
         {
             parent[i] = i;
         }
+        rank = vector<int> (n, 0);
     }
 
 public:
