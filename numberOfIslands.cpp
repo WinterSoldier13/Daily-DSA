@@ -1,3 +1,6 @@
+#include<bits/stdc++.h>
+using namespace std;
+
 class Solution {
 public:
     int rows,cols;
@@ -7,14 +10,14 @@ public:
     {
         if(i<0||i>=rows||j<0||j>=cols||grid[i][j]=='0')
             return;
+            
         grid[i][j]='0';
+
         helper(grid,i+1,j);
         helper(grid,i,j+1);
         helper(grid,i,j-1);
         helper(grid,i-1,j);
     }
-    
-    
     
     int numIslands(vector<vector<char>>& grid) 
     {
@@ -38,7 +41,6 @@ public:
                 }
             }
         }
-        
         return count;
         
     }

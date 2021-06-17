@@ -7,8 +7,6 @@ using namespace std;
 void recurse(vector<vector<int>> &arr, int index, vector<int> &track, stack<int> &stack)
 {
     track[index] = 1;
-    
-
     for(int nodes: arr[index])
     {
         if(track[nodes] == 0)
@@ -16,9 +14,7 @@ void recurse(vector<vector<int>> &arr, int index, vector<int> &track, stack<int>
             recurse(arr, nodes, track, stack);
         }
     }
-
     stack.push(index);
-
 }
 
 void dfs(vector<vector<int>> &arr, int n)

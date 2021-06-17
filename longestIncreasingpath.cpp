@@ -18,13 +18,13 @@ private:
 
     void __init__(int n, int m)
     {
-        mem = vector<vector<int>>(201, vector<int>(201, -1));
+        mem = vector<vector<int>>(n, vector<int>(m, -1));
     }
     int recurse(vector<vector<int>> &arr, int i, int j, int prevEle)
     {
         int rows = arr.size();
         int cols = arr[0].size();
-        cout<<i<<" "<<j<<endl;
+        // cout<<i<<" "<<j<<endl;
         if (i < 0 or i >= rows or j < 0 or j >= cols or arr[i][j] <= prevEle)
         {
             return 0;
