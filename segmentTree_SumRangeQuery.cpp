@@ -77,7 +77,7 @@ private:
 
     int getSum(int start, int end, int currI, int currJ, int index)
     {
-        // start -> given from input
+        // start -> given from input 
         // end -> given from input
         // currI -> equ to start in constructTree function
         // currJ -> equ to end in constructTree function
