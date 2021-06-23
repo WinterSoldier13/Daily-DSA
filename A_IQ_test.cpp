@@ -32,23 +32,27 @@ using namespace std;
 
 
 void solve(){
-    int n;cin>>n;
-    vi v(n);
-    vin(x,v);
-    int even=0,odd=0;
-    rep(i,n){
-        if(v[i]%2==0)even++;
-        else odd++;
-    }
-    int check;
-    if(even>odd)check=1;
-    else check=0;
-    rep(i,n){
-        if(v[i]%2==check){
-            cout<<i+1;
-            return;
+    char arr[5][5];
+    // cout<<arr[3][5];
+    int count=0;
+    for(int i=0;i<4;i++){
+        string s;cin>>s;
+        for(int j=0;j<4;j++){
+            arr[i][j]=s[j];
         }
     }
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            if(arr[i][j]=='.')count++;
+            if(arr[i+1][j]=='.')count++;
+            if(arr[i][j+1]=='.')count++;
+            if(arr[i+1][j+1]=='.')count++;
+            if(count!=2){cout<<"YES";return;}
+           count=0;
+        }
+        // cout<<".";
+    }
+    cout<<"NO";
 }
 
 signed main(){
