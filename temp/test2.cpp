@@ -74,7 +74,6 @@ int main()
 
 	// if it is a Inorder of a BST then it is already sorted
 	int index = bSearch(in, k);
-    cout<<"INDEX "<<index<<endl;
 	if(index == -1)
 	{
 		// all the values are less than k
