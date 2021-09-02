@@ -1,3 +1,13 @@
+// HOTEL
+// 1. Guest will be able to SEARCH and book room
+// 2. Different kind of rooms will be available
+// 3. Each room will have a key and a master key
+// 4. There will be different kinds of people interacting
+//      (i) Guest-> will book the room, or cancel a booked room
+//      (ii) Receptionist -> should checkIn and checkOut guest
+//      (iii) houseKeeping -> should clean the room 
+//      (iv) Admin -> who should be able to add or delete rooms
+// 
 class Hotel {
 	
 	String Name;
@@ -20,7 +30,6 @@ class Room {
 	RoomStatus roomStatus;
 	Double bookingPrice;
 	List<RoomKey> roomKeys;
-	List<HouseKeepingLog> houseKeepingLogs;
 
 }
 
@@ -37,22 +46,12 @@ public enum RoomStatus {
 class RoomKey {
 	
 	String keyId;
-	String barCode;
 	Date issuedAt;
 	Boolean isActive;
 	Boolean isMaster;
 
 	public void assignRoom(Room room);
 
-}
-
-class HouseKeepingLog {
-	String description;
-	Date startDate;
-	int duration;
-	HouseKeeper houskeeper;
-
-	public void addRoom(Room room);
 }
 
 abstract class Person {
@@ -62,19 +61,6 @@ abstract class Person {
 	String phone;
 }
 
-public class Account {
-
-	String username;
-	String password;
-
-	AccountStatus accountStatus;
-
-}
-
-public enum AccountStatus {
-
-	ACTIVE, CLOSED, BLOCKED;
-}
 
 class HouseKeeper extends Person {
 
@@ -122,7 +108,7 @@ class RoomBooking {
 	BookingStatus bookingStatus;
 	List<Guest> guestList;
 	List<Room> roomInfo;
-	BaseRoomCharge totalRoomCharges;
+	RoomCharge totalRoomCharges;
 }
 
 
@@ -130,41 +116,17 @@ class RoomBooking {
 *	Decorator pattern is used to decorate the prices here.
 **/
 
-interface BaseRoomCharge {
-
-	Double getCost();
-
-}
-
 class RoomCharge implements BaseRoomCharge {
 
 	
 	double cost;
-	Double getCost() {
+
+
+	public Double getCost() {
 		return cost;
 	}
-	void setCost(double cost) {
-		this.cost = cost;
-	}
-}
-
-class RoomServiceCharge implements BaseRoomCharge {
-
-	double cost;
-	BaseRoomCharge baseRoomCharge;
-	Double getCost() {
-		baseRoomCharge.setCost(baseRoomCharge.getCost() + cost);
-		return baseRoomCharge.getCost();
-	}
-}
-
-class InRoomPurchaseCharges implements BaseRoomCharge {
-
-	double cost;
-	BaseRoomCharge baseRoomCharge;
-	Double getCost() {
-		baseRoomCharge.setCost(baseRoomCharge.getCost() + cost);
-		return baseRoomCharge.getCost();
+	void appendCost(double cost) {
+		this.cost += cost;
 	}
 }
 
