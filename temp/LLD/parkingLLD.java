@@ -1,3 +1,12 @@
+// Parking Lot 
+// Features: (i) Different Parking Floors
+// 			 (ii) Support different type of Vehicles
+//			 (iii) has multiple entrance -> where you can get your parking ticket
+//			 (iv) has muliple exits -> where you can pay your parking fee
+// 
+
+
+
 class ParkingLot {
 	
 	List<ParkingFloor> parkingFloors;
