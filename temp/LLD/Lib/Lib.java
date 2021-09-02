@@ -1,3 +1,13 @@
+// LIBRARY
+// 1. It should have members and Librarian 
+// 2. Members should be able to issue a book either though
+//    automatic computer or a librarian
+// 4. Members and Librarian should be able to search for a book
+// 5. There can be multiple copies of the same book
+// 6. The book can be of different genere (like sci-fi, drama) and format(like hardcover, paperback)
+// 7. Each book is kept on a unique rack
+
+
 class Library {
 
 	String name;
@@ -7,20 +17,22 @@ class Library {
 
 class Book {
 
-	String uniqueIdNumber;
+	long ISBN;
 	String title;
 	List<Author> authors;
 	BookType bookType;
 }
 
+// we are defining this because there can be multiple copies of the same book
 class BookItem extends Book {
-
-	String barcode;
+	int itemId;
 	Date publicationDate;
 	Rack rackLocation;
-	BookStatus bookStatus;
 	BookFormat bookFormat;
+
+	BookStatus bookStatus;
 	Date issueDate;
+	List<Member> issueHistory;
 }
 
 class Address {
@@ -77,6 +89,7 @@ class SystemUser extends Person {
 class Member extends SystemUsers {
 
 	int totalBookCheckedOut;
+	List<BookItem> bookHistory;
 
 	Search searchObj;
 	BookIssueService issueService;
@@ -89,7 +102,7 @@ class Librarian extends SystemUsers {
 	BookIssueService issueService;
 
 	public void addBookItem(BookItem bookItem);
-	public BookItem deleteBookItem(String barcode); 
+	public BookItem deleteBookItem(); 
 	public BookItem editBookItem(BookItem bookItem);
 }
 
@@ -110,8 +123,6 @@ class Search {
 }
 
 class BookIssueService {
-
-	Fine fine;
 
 	public BookReservationDetail getReservationDetail(BookItem book);
 
@@ -137,7 +148,7 @@ class BookLending {
 
 class BookReservationDetail extends BookLending {
 
-	ReservationStatus reservationStatus;
+	BookReservationStatus reservationStatus;
 
 }
 
@@ -145,13 +156,4 @@ class BookIssueDetail extends BookLending {
 
 	Date dueDate;
 
-}
-
-class Fine {
-
-	Date fineDate;
-	BookItem book;
-	SystemUser user;
-
-	public double calculateFine(int days);
 }
