@@ -38,3 +38,8 @@ DESIGN:
 
 
 
+Database: 
+
+USER : userid, fname, lname, email, passwordHash
+video: videoId, title, comment, length, uploadedByUserID, timestamp, likesCount, linkToCaptions
+comments: commentId, userId, commentBody, timestamp, likesCounter  [indexed on timestamp]
