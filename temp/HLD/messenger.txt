@@ -29,6 +29,7 @@ DESIGN:
 -> Now let's say a client was offline and now it connects to the gateway, so it will first request all the messages that it has missed from a server which will query the database and fetch the messages.
 
 
+Messenger actually uses HBase
 Databases:
 User: userId, fName, lName, phone, email
 Messages: messageID, from_userID, to_userID, isGrpMssg, grpId, timestamp, URL_of_multimedia
