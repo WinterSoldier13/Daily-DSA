@@ -1,0 +1,25 @@
+-> User should be able to upload pictures/Videos
+-> User should be able to see picture uploaded by others
+-> User should be able to follow other people
+-> User should be able to search for other poeple
+
+-> It should be highly available
+-> The latency should be less
+-> It is okay if our system is eventually consistent
+
+-> Ask for the user estimate 
+-> 500KB pic + see database below
+
+-> Add a gateway first
+	-> redirect to different loadBalancer with different serevers
+			-> Upload picture service
+			-> Generate userFeed service
+			-> Search service (Use elastic searcg)
+			-> follow other people service
+
+	-> good 2 have: Kafaka where you can direct information about what the user liked and also after creating a new profile add to elastic search db.
+
+-> Database:
+	USER : userID, name, email, dob, creationDate, lastLogin, isActive
+	Photo: photoID, userID, photoStorageURL, geo_tag, timestamp
+	UserFollow : UserId1, UserId2
