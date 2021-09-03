@@ -23,3 +23,6 @@
 	USER : userID, name, email, dob, creationDate, lastLogin, isActive
 	Photo: photoID, userID, photoStorageURL, geo_tag, timestamp
 	UserFollow : UserId1, UserId2
+
+	Also you need to implement sharding... we can shard by location, but if it is night in India then the load on the Indian server will be a lot less while on the USA server it will be too much
+	So better shard on userID.
