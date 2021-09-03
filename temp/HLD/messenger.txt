@@ -1,0 +1,24 @@
+// Whatsapp
+
+-> It should support 1 to 1 communication
+-> It should keep track of read, delivered and not delivered status of messages
+-> What kind of storage do we want, should the user should be alble to get all messages from any device like Telegram or the messages should be on single device
+-> It should support pushNotification
+-> Additionaly it should support group conversation
+
+-> very low latency
+-> Should be highly consistent in the sense that the messages should get to the user in the right seq
+-> High availibily is good, but we between consistenct and availibily we should go with consistency
+
+-> Estimate storage, take avg text message to be 250 chars => 500 bytes
+-> Additionaly we should also store timestamp with messages, from which user it was sent to , to which user
+
+
+
+DESIGN:
+
+-> Make 3 clients
+-> Make a gateway to route requests to different servers
+-> UserA sends message to userB thourgh the server, the server receives the message and sends an acknowledgment to userA, the server stores the message in its databse and send the message to userB, userB then receives the message and then sends ack to the server, the server notifies the userA that the message has been delivered to userB. Now here the userB can send 2 ttype of ACK one is that it has received the message then the USer a will only see the double tick, or it can send an ack on opening the message then the userA sees a blue Tick
+
+
