@@ -1,0 +1,40 @@
+YouTube
+
+1. User should be able to watch a video
+2. User should be able to upload a video
+3. User should be able to search for a video
+4. User can like dislike the video
+5. User can comment on a video
+
+
+1. Highly available
+2. Eventual consistency
+3. Low latency
+4. Durable
+5. Should support multiple devices and format
+
+
+DESIGN:
+
+1. Let's have 2 clients
+2. Let's connect them to a gateway
+3. the gateway will have multiple services on the other side
+			(i) Upload Service: A cluster of server, video is sent in chunks (each chunk has unique SHA key), distributed to QUEUE of multiple workers
+								The workers do all the processing on the video chunk, convert them to different chunks
+								with different compression. Then the chunks are stored in S3.
+								The upload service has a secondary service that sends the title of the video to elastic search cluster. 
+								The upload service also stores meta data into a RDBMS
+			(ii) Streaming Service: The service gets the chunks from the Amazon S3 and streams it to the client
+									Good to mention CDN should be there storing highly demanded videos in a cache
+									Netflix uses openConnect as CDN, other can be CloudFlare
+									JUST DECOUPLE THE BELOW STUFF FROM THE STREAMING SERVICE
+									The Streaming Service also loads comments for a particular video from the database.
+									The comment database is read heavy so we will use Master-Slave, the master will async send the comment to the slaves
+									We can also add comments to the video, which will go to the master database
+									We can also like dislike the video
+									The user interaction with the video can go to kafka, that will go to spark to recommendation engine.
+			(iii) Search Service : connected to Elastic Search
+
+
+
+
