@@ -1,0 +1,30 @@
+Twitter
+
+1. User should be able to post tweet (text, image, video)
+2. User should be able to follow other users
+3. Users can like a tweet
+4. User should get a timeline
+5. Page for what is trending
+
+
+1. Highly available
+2. Low Latency
+3. Eventual Consistent
+
+
+User capacity? 1 tweet  = 200 chars = 400 bytes
+Average number of followers/following?
+Avg Tweet per day?
+The System is read heavy?
+
+Good points:
+1. Different kinds of Users: ACTIVE, NOT_ACTIVE, CELEBRITY
+2. User database can be RDBMS : userId, userName, email, passwordHash
+	follower/following : {userId1, userId2}
+	Tweets should be NoSQL maybe... idk ask Cassendra XD : {tweetId, userID, tweetString, timestamp, mediaURL, geolocation, numberOfLikes}
+	Liked by : {tweetId, userId}
+3. Beacuse we target low latency so the user timeline should be preCalculated and stored in a cache like Reddis
+4. Whenever an user Tweets, the tweet is send to the Reddis cache of all the ACTIVE followers
+5. Additionaly if an celebrity Tweets then the number of follower is huge, so we will not employ this mech
+   Instead we will pull.
+6. The Tweet should go to a processing engine to extract hashtags, and geolocation to make trending page

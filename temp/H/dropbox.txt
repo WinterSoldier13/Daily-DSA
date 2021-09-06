@@ -1,0 +1,29 @@
+// DROPBOX
+
+-> user should be able to upload and download their files from any device
+-> Automatic Syncronization of documents should occur
+
+-> High read and write
+-> Highly available 
+-> Consistent or maybe eventually consistent 
+
+
+For uploading by syncronization service
+-> We can divide a file into multiple small chunks of let's say 4MB each, that way instead of uploading and reuploading the file again for a small change we can just upload that small chunk. The small chunks will have a unique hash, whenever any changes is made to the file the hash value of the chunk will change.
+
+-> For each file we will also store some kind of metadata, like when it was created, who created it, who has access to it, file size
+
+
+DESIGN:
+-> First make 2 clients
+-> A gateway for them to interact with
+-> We should also keep metadata on the client side so that if any chunk is updated locally it will be stored here
+-> The client should be responsible for dividing the file and uploading it in chunks
+-> Though the gateway there should be LB+servers:
+		(i) Upload/Download service -> Handles upload, stores metadata to a database and pictures to AmazonS3
+		(ii) Sync Service: responsible for syncing with the clients, it should have a TCP WebSocket connection with the clients to  ONLY NOTIFY of any changes using Metadata, then it will push/pull only the modified chunk using upload/download service. The client will be responsible for generating files from these chunks.
+			The sync service should use a messaging queue to store and communicate details about changes asynchronously
+
+
+-> Add a service to share files with other users
+-> Add a cache to store information about a file which is being highly downloaded
