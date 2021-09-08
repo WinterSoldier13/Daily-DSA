@@ -4,8 +4,8 @@
 -> we should be able to share Image
 -> The messaging should be encrypterd
 -> It should keep track of read, delivered and not delivered status of messages
--> What kind of storage do we want, should the user should be alble to get all messages from any device like Telegram or the messages should be on single device
 -> It should show last seen
+-> What kind of storage do we want, should the user should be alble to get all messages from any device like Telegram or the messages should be on single device
 -> Additionaly it should support group conversation
 
 -> very low latency
