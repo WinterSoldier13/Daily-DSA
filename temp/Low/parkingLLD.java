@@ -18,7 +18,6 @@ class ParkingLot {
 	String parkingLotName;
 
 	public boolean isParkingSpaceAvailableForVehicle(Vehicle vehicle);
-	public boolean updateParkingAttndant(ParkingAttendant parkingAttendant, int gateId)
 
 }
 
@@ -34,7 +33,6 @@ class ParkingFloor {
 class Gate {
 
 	int gateId;
-	ParkingAttendant parkingAttendant;
 
 }
 
