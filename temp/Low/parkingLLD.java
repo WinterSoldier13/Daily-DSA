@@ -18,7 +18,6 @@ class ParkingLot {
 	String parkingLotName;
 
 	public boolean isParkingSpaceAvailableForVehicle(Vehicle vehicle);
-	public boolean updateParkingAttndant(ParkingAttendant parkingAttendant, int gateId)
 
 }
 
@@ -34,7 +33,6 @@ class ParkingFloor {
 class Gate {
 
 	int gateId;
-	ParkingAttendant parkingAttendant;
 
 }
 
@@ -94,10 +92,6 @@ class Admin extends Account {
 	public boolean addParkingFloor(ParkingLot parkingLot, ParkingFloor floor);
 	public boolean addParkingSpace(ParkingFloor floor, ParkingSpace parkingSpace);
 	public boolean addParkingDisplayBoard(ParkingFloor floor, ParkingDisplayBoard parkingDisplayBoard);
-	.
-	.
-	.
-
 }
 
 class ParkingAttendant extends Account {
