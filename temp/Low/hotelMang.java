@@ -1,19 +1,23 @@
 // HOTEL
 // 1. Guest will be able to SEARCH and book room
 // 2. Different kind of rooms will be available
-// 3. Each room will have a key and a master key
-// 4. There will be different kinds of people interacting
+// 3. There will be different kinds of people interacting
 //      (i) Guest-> will book the room, or cancel a booked room
 //      (ii) Receptionist -> should checkIn and checkOut guest
 //      (iii) houseKeeping -> should clean the room 
 //      (iv) Admin -> who should be able to add or delete rooms
-// 
+// 4. Each room will have a key and a master key
+
 class Hotel {
 	
 	String Name;
 	Integer id;
 	Location hotelLocation;
 	List<Room> roomList;
+
+	Receptionist receptionist;
+	vector<HouseKeeper> houseKeepers;
+
 
 }
 
